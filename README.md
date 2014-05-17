@@ -93,18 +93,50 @@ You should create one R script called run_analysis.R that does the following:
     subject and activity. See David Hood's informal checklist in the forum 
     https://class.coursera.org/getdata-003/forum/thread?thread_id=92.
     
-    
-
-
 ## Detailed documentation (somewhat a duplication of run_analysis.R)
 
-### Transforming the variable names
+### Merging the test and train data sets
+
+As we are only interested in means and standard deviations of measurements, I
+only merged X_text.txt and X_train.txt, y_test.txt and y_train.txt, and 
+subject_test.txt and subject_train.txt.
+
+I first create a temporary directory in which I copy the \*_test.txt files 
+(and removed the \_test from their name) as well as 
+the activity_label.txt and features.txt. Since the \*_train.txt files do not contain 
+headers and have the same structure as the \*_test.txt files, I combine the 
+data sets by appending the \*_test.txt files.
+
+After reading the resulting file X.txt, subject.txt and y.txt 
+the subject and y (activity) were added as columns to the X data frame. This assumes that 
+the individual rows of the files correspond to each other.
+
+### Extract the mean and standard deviation for each measurement
+
+I decided that frequency is a measurement and thus I extract the variables 
+containing mean(), std() and meanFreq(). This is performed with 
+grep and the regular expression (?:mean|std).
+
+### Activity labels
+
+Having decided that the integers in the file y correspond to the activities in 
+activity_labels.txt, I replace the integers by the activity labels. I also ensure that
+the activity labels agree with my naming conventions. 
+
+### Column names and transforming the variable names
+
+I named the column corresponding to the y.txt file activity.
+I named the column corresponding to the subject.txt file subject.
+The remaining variables were labeled according to the names given in features.txt.
+
+The names given in features were than converted to more meaningful names using 
+the following:
 
 - I decided that explicitly mentioning the time domain was not necessary.
 
 - I decided that explicitly mentioning the magnitude was not necessary. 
-    It should be clear that if it is not one of the vector components 
-    that it is the magnitude.
+    It should be clear that if it is not one of the vector components, 
+    then it is the magnitude.
     
 - I was not sure if the gravity was the only static acceleration, thus I used 
     static acceleration, which seems to be the standard term in accelerometer 
@@ -119,6 +151,8 @@ You should create one R script called run_analysis.R that does the following:
     
 - To indicate that the data is in the frequency domain, I used spectral in the 
     variable name.
+
+The resulting translations of the variables are given in the following:
 
  old names         | new names                
 -------------------|--------------------------
@@ -145,8 +179,30 @@ You should create one R script called run_analysis.R that does the following:
 - std() is changed to standard_deviation at the beginning of the name
 - meanFreq() is changed to mean_frequency at the beginning of the name
 
+### Create a second independent tidy data set
+
+The first data set is stored as sensor_data_for_human_activity.txt in the folder 
+tidyData.
+
+The data is then read and using aggregate the median of each combination of 
+subject and activity is computed. The resulting data set is then stored as 
+aggregated_median_sensor_data_for_human_activity.txt in the folder tidyData.
+
+To make the decision which average to use I have also calculated the mean 
+for each combination of subject and activity. Comparing the median and mean 
+showed large differences for some variables. To investigate further, I plotted 
+a histogram of the data for subject 28 with acitivity laying. This made clear 
+that the mean is a poor choice in this case and I used the median for all cases.
 
 ## Decisions
+
+- I decided that the numbers corresponding to feature names in features.txt were 
+referring to the columns in X_train.txt and X_test.txt
+
+- I decided that the y_test.txt and y_train.txt files contain integers corresponding 
+to the activity labels given in activity_labels.txt.
+
+- I decided that the rows in files y_\*.txt, X_\*.txt and subject_\*.txt correspond to each other.
 
 - When combining the test and train data sets into one file, I decided to drop the information about which observations were in the train and test data sets, i.e. I did not create a partition column with values train and test. As they were randomly partitioned and we are not using the data set to reproduce the results of the paper that the creators of the data set published, I did not think that the information was worth saving.
 
@@ -154,7 +210,7 @@ You should create one R script called run_analysis.R that does the following:
 
 - In my attempt to create meaningful variable names, I made the decision that GyroJerk was mislabeled in the original data (see What_is_gyro_jerk.R script for details). As I believe it is the first derivative of angular velocity, it should be labeled as angular acceleration.
 
-- To extract measurements on the mean and standard deviation, I decided to include the variables that were obtained with the "estimation"" techniques mean(), std(), and meanFreq(). The meanFreq() was included, as I decided that the frequency components were also a measurement.
+- To extract measurements on the mean and standard deviation, I decided to include the variables that were obtained with the "estimation" techniques mean(), std(), and meanFreq(). The meanFreq() was included, as I decided that the frequency components were also a measurement.
 
 - The average in step 5) of the instructions is the median. 
     I use the median, as the mean does not make sense for at least the 
@@ -162,8 +218,8 @@ You should create one R script called run_analysis.R that does the following:
     of the 2.56 second window means for this case, you will find that there are 
     two peaks of similar height at -1.0 and at +1.0. The mean would produce 
     a result of 0.0158, while the median produces a result of 0.830 which is more 
-    representative of the data. However, a different summary might be more appropriate.
+    representative of the data.
 
-- Changed activity labels walking_up_stairs and walking_downstairs to walking_up_stairs 
+- Changed activity labels walking_upstairs and walking_downstairs to walking_up_stairs 
 and walking_down_stairs as this acitivity was pictured in the paper referenced in 
 the original data.
