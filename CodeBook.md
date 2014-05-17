@@ -25,8 +25,8 @@ There a two fixed variables (given in the first two columns of the data set):
 
 
 There are 79 measured numerical variables in the data set. As the original data 
-had been normalized the variables are dimensionless. These are build up from 
-five bases:
+had been normalized the variables are dimensionless. The measured variables 
+are build up from five bases:
 
 - dynamic_acceleration:
     The accelerations measured by the accelerometer which have features 
@@ -36,15 +36,17 @@ five bases:
     The accelerations measured by the accelerometer which have features 
     with frequencies below 0.3 Hz.
 
-- jerk: 
-    $$ \rm{jerk} = \frac{\rm{d}}{\rm{d}t} \rm{dynamic\_acceleration} $$
+- jerk:
+    The first time derivative of dynamic acceleration.
+    \[ \rm{jerk} = \frac{\rm{d}}{\rm{d}t} \rm{dynamic\_acceleration} \]
 
 - angular_velocity:
     The angular velocities measured by the gyroscope which have features
     with frequencies below 20 Hz.
 
 - angular_acceleration:
-    $$ \rm{angular\_acceleration} = \frac{\rm{d}}{\rm{d}t} \rm{angular\_velocity} $$
+    The first time derivative of angular velocity.
+    \[ \rm{angular\_acceleration} = \frac{\rm{d}}{\rm{d}t} \rm{angular\_velocity} \]
     
 The accelerometer and gyroscope are 3-axial. Thus they measure a vector in 
 the coordinate system of the smartphone. The variables are mappings of this 

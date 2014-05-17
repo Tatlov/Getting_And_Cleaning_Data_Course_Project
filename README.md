@@ -24,10 +24,11 @@ you create two data sets in a directory called tidyData.
 file name       | description
 ----------------|---------
 download_data.R | Download the original data.
+                |
 run_analysis.R  | Provide a list of instructions to tidy and aggregate the original data.
                 |
                 | The function tidy_data() combines the train and test data set of 
-                | the original data, adds labels to the columns and adds columns for
+                | the original data, adds headers to the columns and adds columns for
                 | subject and activity. It stores the resulting tidy data set as
                 | a text file sensor_data_for_human_activity.txt in a directory 
                 | called tidyData.
@@ -37,18 +38,27 @@ run_analysis.R  | Provide a list of instructions to tidy and aggregate the origi
                 | for each combination of subject and activity. It stores the resulting
                 | file aggregated_mean_sensor_data_for_human_activity.txt in 
                 | the tidyData directory.
-README.md       | give important general information on the project
-CodeBook.md     | explain the tidy data set
-What_is_gyro_jerk.R | back up the decision to rename variable gyroJerk
+                |
+README.md       | Important general information on the project
+                |
+CodeBook.md     | Explains the tidy data set
+                |
+What_is_gyro_jerk.R | Explains the decision to rename variable gyroJerk
 
 
 ## Instruction list
 
-1. The data was downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip at datetime 2014-05-13 10:33:28 UTC using the function download_data() in download_data.R
+1. The data was downloaded from
+
+    https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+    
+    at datetime 2014-05-13 10:33:28 UTC using the function download_data() 
+    in download_data.R
 
 2. The data was selected and tidied using the function tidy_data() in run_analysis.R
 
-3. A clean data set with the means of a selected set of variables was created with the function create_tidy_data_set_with_averages() in run_analysis.R
+3. A clean data set with the medians of variables was created with the function 
+    create_tidy_data_set_with_averages() in run_analysis.R
 
 4. The tidy data set was documented in CodeBook.md
 
@@ -124,11 +134,12 @@ You should create one R script called run_analysis.R that does the following:
  tBodyGyroJerkMag  | angular_acceleration
  fBodyAcc-XYZ      | spectral_dynamic_acceleration_xyz
  fBodyAccJerk-XYZ  | spectral_jerk_xyz
- fBodyGyro-XYZ     | spectral_angular_velocity
+ fBodyGyro-XYZ     | spectral_angular_velocity_xyz
  fBodyAccMag       | spectral_dynamic_acceleration
  fBodyAccJerkMag   | spectral_jerk
  fBodyGyroMag      | spectral_angular_velocity
  fBodyGyroJerkMag  | spectral_angular_acceleration
+
 
 - mean() is changed to mean at the beginning of the name
 - std() is changed to standard_deviation at the beginning of the name
