@@ -1,14 +1,12 @@
 # Course Project
 # Coursera's Getting and Cleaning Data
 
-# downloading and unzipping the data
-
-# download
+# downloading the data
 download_data <- function(){
-    # Destination file
+    # name of the file where the downloaded data is saved.
     file_name <- "Dataset.zip"
     file_path <- file.path(".",file_name)
-    # check if file exists
+    # check if file exists already
     if (!file.exists(file_path)){
         # url as given in the project instructions
         file_url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
@@ -19,17 +17,9 @@ download_data <- function(){
         write.csv(data.frame(time_downloaded = 
                                  format(Sys.time(),tz="UTC",usetz=TRUE),
                              file_url = file_url),
-                  file = date_file_path) 
+                  file = date_file_path, row.names = FALSE) 
     }
 }
 
-# unzip
-unzip_file <- function(){
-    file_name <- "Dataset.zip"
-    file_path <- file.path(".",file_name)
-    if (file.exists(file_path)){
-        unzip(file_path) 
-    }
-}
 
 
