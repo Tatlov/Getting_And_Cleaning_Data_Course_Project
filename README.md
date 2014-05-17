@@ -103,7 +103,7 @@ As we are only interested in means and standard deviations of measurements, I
 only merged X_text.txt and X_train.txt, y_test.txt and y_train.txt, and 
 subject_test.txt and subject_train.txt.
 
-I first create a temporary directory in which I copy the \*_test.txt files 
+I first created a temporary directory in which I copied the \*_test.txt files 
 (and removed the \_test from their name) as well as 
 the activity_label.txt and features.txt. Since the \*_train.txt files do not contain 
 headers and have the same structure as the \*_test.txt files, I combine the 
@@ -119,7 +119,7 @@ files have been read into R.
 ### Extract the mean and standard deviation for each measurement
 
 I decided that frequency is a measurement and thus I extract the variables 
-containing mean(), std() and meanFreq(). This is performed with 
+containing mean(), std() and meanFreq(). This is performed with the function
 grep and the regular expression (?:mean|std).
 
 ### Activity labels
