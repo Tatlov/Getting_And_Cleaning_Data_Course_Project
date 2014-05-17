@@ -12,13 +12,15 @@ This document has two sections:
 
 ## Code book
 
+### Variable composition
+
 There a two fixed variables (given in the first two columns of the data set):
 
-- subject: 
+- **subject**: 
     The subject performing the activity and wearing the smartphone while 
     the data was recorded. The subjects are identified by numbers 1 to 30.
 
-- activity:
+- **activity**:
     The activity performed by the subject while the smartphone sensor data 
     was recorded. The activities are laying, sitting, standing, walking, 
     walking_down_stairs, walking_up_stairs.
@@ -28,58 +30,58 @@ There are 79 measured numerical variables in the data set. As the original data
 had been normalized the variables are dimensionless. The measured variables 
 are build up from five bases:
 
-- dynamic_acceleration:
+- **dynamic_acceleration**:
     The accelerations measured by the accelerometer which have features 
     in the frequency range between 0.3 and 20 Hz.
 
-- static_acceleration:
+- **static_acceleration**:
     The accelerations measured by the accelerometer which have features 
     with frequencies below 0.3 Hz.
 
-- jerk:
+- **jerk**:
     The first time derivative of dynamic acceleration.
     
-- angular_velocity:
+- **angular_velocity**:
     The angular velocities measured by the gyroscope which have features
     with frequencies below 20 Hz.
 
-- angular_acceleration:
+- **angular_acceleration**:
     The first time derivative of angular velocity.
         
 The accelerometer and gyroscope are 3-axial. Thus they measure a vector in 
 the coordinate system of the smartphone. The variables are mappings of this 
 vector to one dimension. There are four different mappings:
 
-- x, y or z: 
+- **x**, **y** or **z**: 
     If the variable name is followed by x, y or z, then the mapping projects 
     the x, y or z vector component.
 
 - variable not followed by x, y, or z: 
     If the variable name is not followed by x, y or z, the reported quantity 
-    is the Euclidean norm (magnitude).
+    is the Euclidean norm (**magnitude**).
 
 There are three summaries that have been performed:
 
-- median_mean: 
+- **median_mean**: 
     This is the median for each subject and activity of the normalized 
     means of the 2.56 second fixed-width windows.
 
-- median_standard_deviation: 
+- **median_standard_deviation**: 
     This is the median for each subject and activity of the normalized standard 
     deviations of the 2.56 second fixed-width windows.
                             
-- median_mean_frequency: 
+- **median_mean_frequency**: 
     This is the median for each subject and activity of the normalized mean 
     frequency of the 2.56 second fixed-width windows.
 
 There is one transformation that has been performed on some variables:
 
-- spectral:
+- **spectral**:
     A Fast Fourier Transform has been performed on the time domain variable
     to convert it to the frequency domain. Variables that do not contain 
     spectral in their name are in the time domain.
 
-The resulting variables are:
+### List of all variables
 
 column number | variable
 --------------|-----------
@@ -173,21 +175,22 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 Information about how the original data was collected is given in the README.txt and 
 features_info.txt contained in the zip file. I summarize the information here 
-in the first section. Please, read the original data for more details. 
+in the first section. Please, read the original information for more details. 
 In the second section, I explain my added summary choices.
 
 ### Gathering of the original data
 
-"The experiments have been carried out with a group of 30 volunteers within an 
+The experiments have been carried out with a group of 30 volunteers within an 
 age bracket of 19-48 years. Each person performed six activities (walking, 
 walking_up_stairs, walking_down_stairs, sitting, standing, laying) 
-wearing a smartphone (Samsung Galaxy S II) on the waist."
+wearing a smartphone (Samsung Galaxy S II) on the waist.
 
-"The experiments have been video recorded to label the data manually" 
+The experiments have been video recorded to label the data manually
 with the correct activities.
 
 The 3-axial raw signals of the accelerometer and gyroscope of the 
-smartphone have been sampled at a constant rate of 50 Hz.
+smartphone have been sampled at a constant rate of 50 Hz while the subject was 
+performing an activity.
 The accelerometer measures acceleration in standard units of gravity g and 
 the gyrospcope measures the angular velocity vector in radians/second.
 
