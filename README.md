@@ -93,7 +93,9 @@ You should create one R script called run_analysis.R that does the following:
     subject and activity. See David Hood's informal checklist in the forum 
     https://class.coursera.org/getdata-003/forum/thread?thread_id=92.
     
-## Detailed documentation (somewhat a duplication of run_analysis.R)
+## More detailed documentation 
+This summarizes the important parts of run_analysis.R. 
+However, to see how the steps were exactly performed look at the run_analysis.R.
 
 ### Merging the test and train data sets
 
@@ -110,6 +112,9 @@ data sets by appending the \*_test.txt files.
 After reading the resulting file X.txt, subject.txt and y.txt 
 the subject and y (activity) were added as columns to the X data frame. This assumes that 
 the individual rows of the files correspond to each other.
+
+The temporary directory and its content is deleted after the 
+files have been read into R.
 
 ### Extract the mean and standard deviation for each measurement
 
