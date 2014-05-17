@@ -38,16 +38,14 @@ are build up from five bases:
 
 - jerk:
     The first time derivative of dynamic acceleration.
-    \\[ \rm{jerk} = \frac{\rm{d}}{\rm{d}t} \rm{dynamic\_acceleration} \\]
-
+    
 - angular_velocity:
     The angular velocities measured by the gyroscope which have features
     with frequencies below 20 Hz.
 
 - angular_acceleration:
     The first time derivative of angular velocity.
-    \\[ \rm{angular\_acceleration} = \frac{\rm{d}}{\rm{d}t} \rm{angular\_velocity} \\]
-    
+        
 The accelerometer and gyroscope are 3-axial. Thus they measure a vector in 
 the coordinate system of the smartphone. The variables are mappings of this 
 vector to one dimension. There are four different mappings:
