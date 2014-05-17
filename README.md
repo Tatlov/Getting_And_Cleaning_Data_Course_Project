@@ -199,6 +199,8 @@ showed large differences for some variables. To investigate further, I plotted
 a histogram of the data for subject 28 with acitivity laying. This made clear 
 that the mean is a poor choice in this case and I used the median for all cases.
 
+I added median before every measured variable name.
+
 ## Decisions
 
 - I decided that the numbers corresponding to feature names in features.txt were 
