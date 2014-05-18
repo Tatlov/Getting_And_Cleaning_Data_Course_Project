@@ -134,11 +134,11 @@ the activity labels agree with my naming conventions.
 
 ### Column names and transforming the variable names
 
-I named the column corresponding to the y.txt file activity.
-I named the column corresponding to the subject.txt file subject.
+I named the column corresponding to the data from the y.txt file activity.
+I named the column corresponding to the data from the subject.txt file subject.
 The remaining variables were labeled according to the names given in features.txt.
 
-The names given in features were than converted to more meaningful names using 
+The names given in features were then converted to more meaningful names using 
 the following:
 
 - I decided that explicitly mentioning the time domain was not necessary.
@@ -193,14 +193,14 @@ The resulting translations of the variables are given in the following:
 The first data set is stored as sensor_data_for_human_activity.txt in the folder 
 tidyData.
 
-The data is then read and using aggregate the median of each combination of 
-subject and activity is computed. The resulting data set is then stored as 
+The data is read and, using aggregate, the median of each combination of 
+subject and activity is computed. The resulting data set is stored as 
 aggregated_median_sensor_data_for_human_activity.txt in the folder tidyData.
 
 To make the decision which average to use I have also calculated the mean 
 for each combination of subject and activity. Comparing the median and mean 
 showed large differences for some variables. To investigate further, I plotted 
-a histogram of the data for subject 28 with acitivity laying. This made clear 
+a histogram of the data for subject 28 with activity laying. This made clear 
 that the mean is a poor choice in this case and I used the median for all cases.
 
 I added median before every measured variable name.
@@ -232,5 +232,5 @@ to the activity labels given in activity_labels.txt.
     representative of the data.
 
 - Changed activity labels walking_upstairs and walking_downstairs to walking_up_stairs 
-and walking_down_stairs as this acitivity was pictured in the paper referenced in 
+and walking_down_stairs as this activity was pictured in the paper referenced in 
 the original data.

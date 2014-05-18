@@ -227,7 +227,7 @@ The data presented in this data set, summarizes the previous results by obtainin
 averages for each combination of subject and activity.
 
 The medians for each combination of subject and activity were taken for 
-each variable in the data set. The median was chosen because the mean is not a 
+each measured variable in the data set. The median was chosen because the mean is not a 
 good summary of the data for some cases, e.g. the mean 
 of mean_static_acceleration_z subject 28 laying is not representative of 
 the individual results as detailed in the README.
