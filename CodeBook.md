@@ -213,9 +213,9 @@ In some cases (labeled spectral) the results were fast Fourier transformed from
 the time domain to the frequency doamin.
 
 The data in the windows were then summarized using mean, standard 
-deviation and mean frequency on the data in individual windows. 
-Mean frequency computed a weighted average of the frequency components. 
-Obviously this was only done for spectral quantities.
+deviation, mean frequency and some other functions on the data in individual windows. 
+(Mean frequency computed a weighted average of the frequency components. 
+Obviously this was only done for spectral quantities.)
 
 The resulting measurements were normalized (across all subjects and activities)
 and bounded within [-1,1].
@@ -223,10 +223,17 @@ and bounded within [-1,1].
 ### My summary choices
 
 The previous steps have been performed by the creators of the original data set.
-The data presented in this data set, summarizes the previous results by obtaining 
+The original data was also split into a training and test set. 
+I merged the training and test data sets into a single data set and selected 
+only those columns corresponding to the mean, standard deviation and mean frequency.
+
+The data presented in the tidy data set 
+aggregated_median_sensor_data_for_human_activity.txt, 
+summarizes the previous results by obtaining 
 averages for each combination of subject and activity.
 
-The medians for each combination of subject and activity were taken for 
+To obtain the average, 
+the median for each combination of subject and activity was taken for 
 each measured variable in the data set. The median was chosen because the mean is not a 
 good summary of the data for some cases, e.g. the mean 
 of mean_static_acceleration_z subject 28 laying is not representative of 
