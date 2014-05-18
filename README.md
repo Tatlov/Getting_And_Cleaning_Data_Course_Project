@@ -111,13 +111,13 @@ I first created a temporary directory in which I copied the \*_test.txt files
 (and removed the \_test from their name) as well as 
 the activity_label.txt and features.txt. Since the \*_train.txt files do not contain 
 headers and have the same structure as the \*_test.txt files, I combine the 
-data sets by appending the \*_test.txt files.
+data sets by appending the \*_test.txt files. \* stands for X, y or subject.
 
 After reading the resulting files X.txt, subject.txt and y.txt 
 the subject and y (activity) were added as columns to the X data frame. This assumes that 
 the individual rows of the files correspond to each other.
 
-The temporary directory and its content is deleted after the 
+The temporary directory and its content are deleted after the 
 files have been read into R.
 
 ### Extract the mean and standard deviation for each measurement
