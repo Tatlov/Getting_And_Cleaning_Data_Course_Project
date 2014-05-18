@@ -34,9 +34,9 @@ run_analysis.R  | Provide a list of instructions to tidy and aggregate the origi
                 | called tidyData.
                 |
                 | The function create_tidy_data_set_with_averages() creates a 
-                | second data set which contains the mean of the variables
+                | second data set which contains the median of the variables
                 | for each combination of subject and activity. It stores the resulting
-                | file aggregated_mean_sensor_data_for_human_activity.txt in 
+                | file aggregated_median_sensor_data_for_human_activity.txt in 
                 | the tidyData directory.
                 |
 README.md       | Important general information on the project
@@ -99,6 +99,8 @@ However, to see how the steps were exactly performed look at the run_analysis.R.
 
 ### Merging the test and train data sets
 
+The zip archive Dataset.zip was unzipped.
+
 As we are only interested in means and standard deviations of measurements, I
 only merged X_text.txt and X_train.txt, y_test.txt and y_train.txt, and 
 subject_test.txt and subject_train.txt.
@@ -109,7 +111,7 @@ the activity_label.txt and features.txt. Since the \*_train.txt files do not con
 headers and have the same structure as the \*_test.txt files, I combine the 
 data sets by appending the \*_test.txt files.
 
-After reading the resulting file X.txt, subject.txt and y.txt 
+After reading the resulting files X.txt, subject.txt and y.txt 
 the subject and y (activity) were added as columns to the X data frame. This assumes that 
 the individual rows of the files correspond to each other.
 

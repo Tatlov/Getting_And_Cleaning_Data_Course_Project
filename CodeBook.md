@@ -207,7 +207,7 @@ The data were split using a fixed-width sliding window of 2.56 sec
 (2.56 seconds/window * 50 readings/second = 128 readings/window) and 50% overlap.
 
 To obtain jerk and angular acceleration, the first time derivative of the dynamic 
-acceleratioin and the angular velocity were taken, respectively.
+acceleration and the angular velocity were taken, respectively.
 
 In some cases (labeled spectral) the results were fast Fourier transformed from 
 the time domain to the frequency doamin.
@@ -223,9 +223,11 @@ and bounded within [-1,1].
 ### My summary choices
 
 The previous steps have been performed by the creators of the original data set.
-The data presented in this data set, summarizes the previous results.
+The data presented in this data set, summarizes the previous results by obtaining 
+averages for each combination of subject and activity.
 
 The medians for each combination of subject and activity were taken for 
 each variable in the data set. The median was chosen because the mean is not a 
 good summary of the data for some cases, e.g. the mean 
-of mean_static_acceleration_z subject 28 laying as detailed in the README.
+of mean_static_acceleration_z subject 28 laying is not representative of 
+the individual results as detailed in the README.
