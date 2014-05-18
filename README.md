@@ -48,6 +48,8 @@ What_is_gyro_jerk.R | Explains the decision to rename variable gyroJerk
 
 ## Instruction list
 
+The data was tidied using R version 3.1.0 in ubuntu 12.04 64-bit.
+
 1. The data was downloaded from
 
     https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
