@@ -3,6 +3,7 @@
 
 # This files consists of two top-level functions
 # create_tidy_data_set_with_averages and tidy_data.
+#
 # To create the two tidy data sets run:
 # source("run_analysis.R")
 # tidy_data()
@@ -38,7 +39,7 @@ create_tidy_data_set_with_averages <- function(){
     aggregated_median_sensor_data_for_human_activity <- aggregate(df[3:n_columns], 
                                                                   by=as.list(df[1:2]), 
                                                                   FUN = median)
-    # create nice column names
+    # create nice column names (median + measured variable)
     column_names <- names(df)
     column_names[3:n_columns] <- paste0("median_",column_names[3:n_columns])
     names(aggregated_median_sensor_data_for_human_activity) <- column_names
@@ -131,19 +132,21 @@ clean_column_names <- function(column_names){
     # tidy the column names
     # I decided to use underscores (see comment in README.md)
     
-    # the new names are composed as follows
+    # The new names are composed of the following elements as follows
     # statistic _ fourier_transform _ measurement _ component
-    # therefore I create empty character vectors first
-    # if the then I obtain the corresponding entries for the variables
-    # and finally combine them into the variable names.
+    # therefore I create empty character vectors first.
+    # Afterwards I obtain the corresponding entries for the variables
+    # and finally combine the elements into the variable names.
     
     # length of vectors
     n_names <- length(column_names)
+    
     # check if the variable is in the frequency domain
     fourier_transform <- character(n_names)
     # search for all names starting with f
     # (I hope that spectral is understood as frequency spectrum related quantity)
     fourier_transform[grep("^f", column_names)] <- "spectral_"
+    
     # check for the statistic
     statistic <- character(n_names)
     # search mean not followed by F
@@ -152,6 +155,7 @@ clean_column_names <- function(column_names){
     statistic[grep("std", column_names)] <- "standard_deviation_"
     # search meanFreq
     statistic[grep("meanFreq", column_names)] <- "mean_frequency_"
+    
     # convert the measurement names
     measurement <- character(n_names)
     measurement[grep("BodyAcc", column_names)] <- "dynamic_acceleration"
@@ -159,12 +163,14 @@ clean_column_names <- function(column_names){
     measurement[grep("BodyAccJerk", column_names)] <- "jerk"
     measurement[grep("BodyGyro", column_names)] <- "angular_velocity"
     measurement[grep("BodyGyroJerk", column_names)] <- "angular_acceleration"
+    
     # add vector components
     component <- character(n_names)
     # check if name ends in XYZ
     component[grep("X$",column_names)] <- "_x"
     component[grep("Y$",column_names)] <- "_y"
     component[grep("Z$",column_names)] <- "_z"
+    
     # assemble names    
     column_names <- paste0(statistic,fourier_transform,measurement,component)
     # return clean column names

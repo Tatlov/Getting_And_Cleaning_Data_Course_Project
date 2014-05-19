@@ -1,6 +1,10 @@
 # Course Project
 # Coursera's Getting and Cleaning Data
 
+# to run this code
+# source("download_data.R")
+# download_data()
+
 # downloading the data
 download_data <- function(){
     # name of the file where the downloaded data is saved.
