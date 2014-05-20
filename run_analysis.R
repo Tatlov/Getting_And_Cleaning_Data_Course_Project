@@ -157,6 +157,7 @@ clean_column_names <- function(column_names){
     statistic[grep("meanFreq", column_names)] <- "mean_frequency_"
     
     # convert the measurement names
+    # this also finds the variables that contain BodyBody
     measurement <- character(n_names)
     measurement[grep("BodyAcc", column_names)] <- "dynamic_acceleration"
     measurement[grep("GravityAcc", column_names)] <- "static_acceleration"

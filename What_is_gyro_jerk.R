@@ -83,10 +83,24 @@ summary(normalize(rowMeans(second_derivative)) - dfX[,161])
 # Regarding to your question, I confirm you we took the derivate of the signal 
 # wrt time to obtain the jerk. It has the advantage to remove the DC component 
 # from the signal and focus on signal variations.  
-
+#
 # In Matlab we used the diff() function for this:
 #    e.g.
 # derivate = diff(signal);
 # derivate(end+1,:) = derivate(end,:); % add missing value
+#
+# My reply:
+# That clarified my confusion. As tBodyGyro refers to angular velocity, 
+# I was not sure if tBodyJerk refers to angular acceleration or angular jerk.
+#
+# Jorge:
+# You are right. It refers to angular acceleration, maybe I didn't use the 
+# optimal notation. You know that Jerk refers to the derivate of the acceleration 
+# http://en.wikipedia.org/wiki/Jerk_(physics) but I used it to name to talk 
+# about the derivate of the angular velocity. 
+
+# tBodyAccJerk is the derivative of tBodyAcc 
+# tBodyGyroJerk is the derivate of  tBodyGyro
+
 
 

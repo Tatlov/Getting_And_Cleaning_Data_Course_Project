@@ -134,10 +134,12 @@ the activity labels agree with my naming conventions.
 
 ### Column names and transforming the variable names
 
+For naming conventions, please, see comment in section decisions.
+
 I named the column corresponding to the data from the y.txt file activity.
 I named the column corresponding to the data from the subject.txt file subject.
-The remaining variables were labeled according to the names given in features.txt.
 
+The remaining variables were labeled according to the names given in features.txt.
 The names given in features were then converted to more meaningful names using 
 the following:
 
@@ -180,8 +182,11 @@ The resulting translations of the variables are given in the following:
  fBodyGyro-XYZ     | spectral_angular_velocity_xyz
  fBodyAccMag       | spectral_dynamic_acceleration
  fBodyAccJerkMag   | spectral_jerk
+ fBodyBodyAccJerkMag | spectral_jerk
  fBodyGyroMag      | spectral_angular_velocity
+ fBodyBodyGyroMag  | sepctral_angular_velocity
  fBodyGyroJerkMag  | spectral_angular_acceleration
+ fBodyBodyGyroJerkMag | spectral_angular_acceleration
 
 
 - mean() is changed to mean at the beginning of the name
@@ -221,7 +226,9 @@ to the activity labels given in activity_labels.txt.
 
 - In my attempt to create meaningful variable names, I made the decision that GyroJerk was mislabeled in the original data (see What_is_gyro_jerk.R script for details). As I believe it is the first derivative of angular velocity, it should be labeled as angular acceleration.
 
-- To extract measurements on the mean and standard deviation, I decided to include the variables that were obtained with the "estimation" techniques mean(), std(), and meanFreq(). The meanFreq() was included, as I decided that the frequency components were also a measurement.
+- I assume that BodyBody in the variable names is the same as Body.
+
+- To extract measurements on the mean and standard deviation, I decided to include the variables that were obtained with the "estimation" techniques mean(), std(), and meanFreq(). The meanFreq() was included, as I decided that the frequency components were also a measurement, i.e. not a fixed variable.
 
 - The average in step 5) of the instructions is the median. 
     I use the median, as the mean does not make sense for at least the 
