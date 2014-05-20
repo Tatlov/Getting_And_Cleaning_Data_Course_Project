@@ -113,8 +113,9 @@ the activity_label.txt and features.txt. Since the \*_train.txt files do not con
 headers and have the same structure as the \*_test.txt files, I combine the 
 data sets by appending the \*_test.txt files. \* stands for X, y or subject.
 
-After reading the resulting files X.txt, subject.txt and y.txt 
-the subject and y (activity) were added as columns to the X data frame. This assumes that 
+After reading the resulting files X.txt, subject.txt and y.txt, 
+the subject and y (activity) were added as columns to the X data frame. 
+This assumes that 
 the individual rows of the files correspond to each other.
 
 The temporary directory and its content are deleted after the 
@@ -184,7 +185,7 @@ The resulting translations of the variables are given in the following:
  fBodyAccJerkMag   | spectral_jerk
  fBodyBodyAccJerkMag | spectral_jerk
  fBodyGyroMag      | spectral_angular_velocity
- fBodyBodyGyroMag  | sepctral_angular_velocity
+ fBodyBodyGyroMag  | spectral_angular_velocity
  fBodyGyroJerkMag  | spectral_angular_acceleration
  fBodyBodyGyroJerkMag | spectral_angular_acceleration
 

@@ -130,7 +130,7 @@ clean_activity_names <- function(activity_names){
 
 clean_column_names <- function(column_names){
     # tidy the column names
-    # I decided to use underscores (see comment in README.md)
+    # I decided to use underscores (see comment in Decisions section of README.md)
     
     # The new names are composed of the following elements as follows
     # statistic _ fourier_transform _ measurement _ component
