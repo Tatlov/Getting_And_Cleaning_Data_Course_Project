@@ -68,3 +68,25 @@ summary(normalize(rowMeans(second_derivative)) - dfX[,161])
 # Roughly an order of magnitude worse than the first derivative.
 
 # Decision: Jerk for Gyro is not angular jerk but angular acceleration!
+
+# My suspicion was confirmed by Jorge from the smart lab team.
+# Summary of the email exchange:
+# My question:
+# In the features_info.txt it says:
+# "Subsequently, the body linear acceleration and angular velocity were derived 
+# in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ)."
+#
+# Does this mean that you took the first derivative with respect to time of
+# tBodyAcc-XYZ and tBodyGyro-XYZ?
+#
+# Jorge's answer:
+# Regarding to your question, I confirm you we took the derivate of the signal 
+# wrt time to obtain the jerk. It has the advantage to remove the DC component 
+# from the signal and focus on signal variations.  
+
+# In Matlab we used the diff() function for this:
+#    e.g.
+# derivate = diff(signal);
+# derivate(end+1,:) = derivate(end,:); % add missing value
+
+
