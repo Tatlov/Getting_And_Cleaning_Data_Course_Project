@@ -1,31 +1,34 @@
 # Course Project
 # Coursera's Getting and Cleaning Data
 
-# This files consists of two top-level functions
-# create_tidy_data_set_with_averages and tidy_data.
+# This file consists of two top-level functions
+# create_tidy_data_set_with_averages() and tidy_data().
 #
 # To create the two tidy data sets run:
 # source("run_analysis.R")
 # tidy_data()
 # create_tidy_data_set_with_averages()
 
-# tidy_data performs the first 4 steps from the instructions:
+# tidy_data() performs the first 4 steps from the instructions:
 # 1) Merges the training and the test sets to create one data set.
-# 2) Extracts only the measurements on the mean and standard deviation for each measurement. 
+# 2) Extracts only the measurements on the mean and standard deviation for each 
+#    measurement. 
 # 3) Uses descriptive activity names to name the activities in the data set
 # 4) Appropriately labels the data set with descriptive activity names.
-# This results in the data set sensor_data_for_human_activity.txt
+# This results in the data set sensor_data_for_human_activity.txt.
 
-# create_tidy_data_set_with_averages does the final step from the instructions
-# 5) Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
-# This results in the data set aggregated_mean_sensor_data_for_human_activity.txt
+# create_tidy_data_set_with_averages() does the final step from the instructions
+# 5) Creates a second, independent tidy data set with the average of each variable 
+#    for each activity and each subject. 
+# This results in the data set aggregated_mean_sensor_data_for_human_activity.txt.
 
 # The two resulting data sets are stored in the folder tidy_directory.
-# tidy_data uses a temporary directory temp_directory
+# tidy_data() uses a temporary directory temp_directory.
 
-# name of the directory used to store data temporarily
+# name of the directory used to store data temporarily 
+# (make sure that directory does not already exist)
 temp_directory <- "temp"
-# name of the directory where the tidy data sets sill be stored
+# name of the directory where the tidy data sets will be stored
 tidy_directory <- "tidyData"
 
 # function to create the second tidy data set with the average (median) of each 
@@ -51,6 +54,10 @@ create_tidy_data_set_with_averages <- function(){
 tidy_data <- function(){
     # unzip file Dataset.zip
     unzip_file()
+    # check if temp_directory already exists
+    if (file.exists(temp_directory)) { 
+        stop('Pick a temp_directory that does not already exist.') 
+    }
     # create temporary directory
     create_directory(temp_directory)
     # Merge the training and the test sets to create one data set
@@ -84,7 +91,7 @@ get_combined_data <- function(){
     # keep only the names of the relevant columns and clean them up
     column_names <- clean_column_names(column_names[relevant_column_indices])
     # set up a mask to read only the relevant columns
-    # 561 is the number of columns in X.txt
+    # 561 is the total number of columns in X.txt
     column_mask <- rep("NULL",561)
     column_mask[relevant_column_indices] <- "numeric" 
     # read the data
@@ -144,7 +151,6 @@ clean_column_names <- function(column_names){
     # check if the variable is in the frequency domain
     fourier_transform <- character(n_names)
     # search for all names starting with f
-    # (I hope that spectral is understood as frequency spectrum related quantity)
     fourier_transform[grep("^f", column_names)] <- "spectral_"
     
     # check for the statistic
@@ -179,14 +185,16 @@ clean_column_names <- function(column_names){
 }
 
 create_joined_data_files_in_temp <- function(){
-    # create a joined data set in the temp folder
-    # copies files activity_labels.txt, features.txt,
+    # Create a joined data set in the temp folder
+    # Uses copy and append to get files activity_labels.txt and features.txt
+    # and combine files
     # subject_*.txt, X_*.txt and y_*.txt where * is train or test.
     # This discards the information about which part was in the 
     # training set and which part was in the test set.
     
     # source data directory
     directory <- "UCI HAR Dataset"
+    
     # copy activity_labels.txt to the temporary directory
     activity_labels_file <- "activity_labels.txt"
     activity_labels_file_path <- file.path(directory,activity_labels_file)
@@ -197,7 +205,7 @@ create_joined_data_files_in_temp <- function(){
         stop("File does not exist")
     }
     
-    # copy activity_labels.txt to the temporary directory
+    # copy features.txt to the temporary directory
     features_file <- "features.txt"
     features_file_path <- file.path(directory,features_file)
     target_file_path <- file.path(temp_directory,features_file)
@@ -243,6 +251,9 @@ create_directory <- function(directory){
     }    
 }
 # delete directory with temporary data
+# This will delete the directory temp_directory and all its content.
+# This does not check if the directory only contains information that should be
+# deleted. Do not run this if you do not understand what it does.
 delete_temporary_directory <- function(){ 
     if (file.exists(temp_directory)){
         unlink(temp_directory, recursive = TRUE)

@@ -49,8 +49,8 @@ are build up from five bases:
     The first time derivative of angular velocity.
         
 The accelerometer and gyroscope are 3-axial. Thus they measure a vector in 
-the coordinate system of the smartphone. The variables are mappings of this 
-vector to one dimension. There are four different mappings:
+the coordinate system of the smartphone. The variables are projections of this 
+vector to one dimension. There are four different projections:
 
 - **x**, **y** or **z**: 
     If the variable name is followed by x, y or z, then the mapping projects 
@@ -178,7 +178,7 @@ features_info.txt contained in the zip file. I summarize the information here
 in the first section. Please, read the original information for more details. 
 In the second section, I explain my added summary choices.
 
-### Gathering of the original data
+### Collection of the original data
 
 The experiments have been carried out with a group of 30 volunteers within an 
 age bracket of 19-48 years. Each person performed six activities (walking, 
@@ -210,7 +210,7 @@ To obtain jerk and angular acceleration, the first time derivative of the dynami
 acceleration and the angular velocity were taken, respectively.
 
 In some cases (labeled spectral) the results were fast Fourier transformed from 
-the time domain to the frequency doamin.
+the time domain to the frequency domain.
 
 The data in the windows were then summarized using mean, standard 
 deviation, mean frequency and some other functions on the data in individual windows. 
@@ -234,7 +234,8 @@ averages for each combination of subject and activity.
 
 To obtain the average, 
 the median for each combination of subject and activity was taken for 
-each measured variable in the data set. The median was chosen because the mean is not a 
+each measured variable in the data set. The median was chosen because the mean 
+is not a 
 good summary of the data for some cases, e.g. the mean 
 of mean_static_acceleration_z subject 28 laying is not representative of 
 the individual results as detailed in the README.
